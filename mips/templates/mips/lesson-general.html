@@ -1,0 +1,117 @@
+{% load static %}
+<html>
+<head>
+	<title>Default Site Name</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="" crossorigin="anonymous">
+
+	<link rel="icon" type="image/png" href="{% static 'mips/images/favicons/default-favicon.ico' %}"/>
+	<link rel="stylesheet" href="{% static 'mips/css/css.css' %}">
+</head>
+<body>
+
+	{% include 'mips/navigation.html' %}
+	<!-- Lesson Title -->
+	{% if lesson_name %}
+		<p class="text-center assignment_title">Lesson {{lesson_number}}: {{lesson_name}}</p>
+	{% else %}
+		<p class="text-center assignment_title">Lesson {{lesson_number}}</p>
+	{% endif %}
+
+	<hr>
+
+
+	<article>
+	<div class="container">
+
+	<!-- Preface -->
+	{% if preface %}
+		<p class="text-center">{{preface}}</p>
+	{% endif %}
+
+
+	<hr>
+	<!-- Sidebar -->
+	<div class="row">
+		<div class="col-lg-2 col-md-3 col-sm-3 col-xs-12 lesson-side-bar-nav">
+
+			<!-- Side nav links -->
+			{% for key, id_name in side_navigation_ids.items %}
+				<p><a class="li-side-bar-anchor" href="#{{id_name}}">{% for sub_key, nav_name in side_navigation_names.items %}{% if key == sub_key %}{{nav_name}}{% endif %}{% endfor %}</a></p>
+			{% endfor %}
+
+			<!-- Check associated file data -->
+			{% if associated_file_data %} 
+				<p><a class="li-side-bar-anchor" href="#full-file">Full File</a></p>
+			{% endif %}
+
+		</div>
+
+
+
+
+		<div class="col-lg-10 col-md-9 col-sm-9 col-xs-12">
+
+		<!--Main Content Img -->
+		{% if main_content_img %}
+			<span><img style="" class="img-fluid" src = "{% static main_content_img %}"></span>
+		{% endif %}
+
+
+		<!--Article Paragraphs -->
+		{% for paragraph in article_paragraphs %}
+			<p class="lesson-p" id="{% for key, id_name in side_navigation_ids.items %}{% if forloop.parentloop.counter0 == key %}{{id_name}}{% endif %}{% endfor %}">{{paragraph}}</p>
+
+			<!-- Display Any Image if Appropriate -->
+			{% for key, image_name in img_paragraph_dict.items %}
+				{% if forloop.parentloop.counter0 == key %}
+					<img style="" class="img-fluid" src = "{% static image_name %}">
+				{% endif %}
+			{% endfor %}
+
+		{% endfor %}
+		
+		</div>
+
+	</div>		<!-- End row -->
+	</div>		<!-- End container -->
+
+
+	</article>
+
+
+	<!-- Any associated file data -->
+	{% if associated_file_data %}
+	<div class ="container">
+		<div class="row">
+
+
+			<div class="col-lg-12 col-sm-12, col-xs-12 col-md-12">
+				<h4 class="text-center" id="full-file">Full File</h4>
+				<hr>
+			</div>
+		
+			<pre>{{associated_file_data}}</pre>
+			
+		</div>
+	</div>
+	{% endif %}
+
+
+	<!-- Extra footer padding -->
+	<div class="container">
+		<div class="footer-space"> </div>
+	</div>
+
+
+
+
+<!-- Bootstrap Javascript Files-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+</body>
+</html>

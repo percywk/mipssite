@@ -1,0 +1,21 @@
+
+{% load static %}
+<html>
+<head>
+	<title>Default Site Name</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="" crossorigin="anonymous">
+
+	<link rel="icon" type="image/png" href="{% static 'mips/images/favicons/default-favicon.ico' %}"/>
+	<link rel="stylesheet" href="{% static 'mips/css/css.css' %}">
+</head>
+<body>
+	
+	{% include  'mips/navigation.html' %}
+
+	<h1 class="error_code_header">404</h1>
+	<p class="error_code_paragraph">The particular url doesn't return anything.... </p>
+	<p class="error_code_paragraph">Try another page.</p>
+
+</body>

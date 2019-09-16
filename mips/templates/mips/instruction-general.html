@@ -1,0 +1,108 @@
+{% load static %}
+<html>
+<head>
+	<title>Default Site Name</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="" crossorigin="anonymous">
+
+	<link rel="icon" type="image/png" href="{% static 'mips/images/favicons/default-favicon.ico' %}"/>
+	<link rel="stylesheet" href="{% static 'mips/css/css.css' %}">
+</head>
+<body>
+
+	{% include 'mips/navigation.html' %}
+	<h3 class="text-center offset-top">{{instruction_name}}</h3>
+	<hr>
+
+
+	<article>
+	<div class="container">
+	<hr>
+	<!-- Sidebar -->
+	<div class="row">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+		<!--Article Paragraphs -->
+		<h4><u>Preface</u></h4>
+		{% for paragraph in paragraph_objects %}
+			{% if paragraph.paragraph_type == "Preface" %}
+				<p class="instruction-p" id="">{{paragraph.paragraph}}</p>
+				<!-- Display Any Image if Appropriate -->
+				{% for key, image_name in image_dict.items %}
+					{% if forloop.parentloop.counter0 == key %}
+						<div class="text-center">
+							<img style="" class="img-fluid rounded" src = "{% static image_name %}">
+						</div>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		{% endfor %}
+
+		<h4><u>Syntax</u></h4>
+		{% for paragraph in paragraph_objects %}
+			{% if paragraph.paragraph_type == "Syntax" %}
+				<p class="instruction-p" id="">{{paragraph.paragraph}}</p>
+				<!-- Display Any Image if Appropriate -->
+				{% for key, image_name in image_dict.items %}
+					{% if forloop.parentloop.counter0 == key %}
+						<div class="text-center">
+							<img style="" class="img-fluid rounded" src = "{% static image_name %}">
+						</div>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		{% endfor %}
+
+
+		<h4><u>Example</u></h4>
+		{% for paragraph in paragraph_objects %}
+			{% if paragraph.paragraph_type == "Example" %}
+				<p class="instruction-p" id="">{{paragraph.paragraph}}</p>
+				<!-- Display Any Image if Appropriate -->
+				{% for key, image_name in image_dict.items %}
+					{% if forloop.parentloop.counter0 == key %}
+						<div class="text-center">
+							<img style="" class="img-fluid rounded" src = "{% static image_name %}">
+						</div>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		{% endfor %}
+
+		<h4><u>Result</u></h4>
+		{% for paragraph in paragraph_objects %}
+			{% if paragraph.paragraph_type == "Result" %}
+				<p class="instruction-p" id="">{{paragraph.paragraph}}</p>
+				<!-- Display Any Image if Appropriate -->
+				{% for key, image_name in image_dict.items %}
+					{% if forloop.parentloop.counter0 == key %}
+						<div class="text-center">
+							<img style="" class="img-fluid rounded" src = "{% static image_name %}">
+						</div>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		{% endfor %}
+
+		</div>
+	</div>		<!-- End row -->
+	</div>		<!-- End container -->
+	</article>
+
+
+
+
+<!-- Extra footer padding -->
+<div class="container">
+	<div class="footer-space"> </div>
+</div>
+
+
+<!-- Bootstrap Javascript Files-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

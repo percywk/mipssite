@@ -1,0 +1,200 @@
+/*
+General Lesson CSS
+*/
+.lesson-p {
+	font-size: 18px;
+	font-family: "Times New Roman";
+	text-indent: 1em;
+	margin-bottom: 15px	
+}
+.lesson-p::first-letter {
+  font-size: 135%;
+}
+
+.lesson-side-bar-nav {
+	border-right: 1px solid black;
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0px;
+	height: 200px !important;
+	padding-top:20px;	
+}
+
+
+/*
+General Instruction CSS
+*/
+.instruction-p {
+	font-family: "Times New Roman";
+	font-size: 18px;
+	margin: 5px;
+}
+
+.instruction::first-letter {
+	font-size: 110%;
+}
+/*
+Special L1 CSS testing
+*/
+.l1-interrupt-header {
+	font-size:15pt;
+	font-family: serif;
+	color: #696c70;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.l1-p {
+	margin: 10px;
+	padding: 5px;
+	font-size: 12pt;
+	font-family: "Times New Roman";
+	text-indent: 2em;
+}
+
+.l1-side-text {
+	text-indent: 1em;
+	padding: 2px;
+	font-family: "Times New Roman";
+	font-size: 12pt;
+}
+
+.l1-side-bar-nav {
+	border-right: 1px solid black;
+	/*position: fixed;*/
+	position: -webkit-sticky;
+	position: sticky;
+	top: 0px;
+	height: 200px !important;	
+}
+
+.li-side-bar-anchor {
+	color: black;
+	font-size: 14pt;
+}
+.li-side-bar-anchor:hover {
+	color: #207491;
+	text-decoration: none;
+}
+.l1-article-space {
+	margin-bottom: 50px;
+}
+
+/*
+Small general case css rules
+*/
+.general_title {
+	font-size: 16pt;
+}
+.make-bold {
+	font-weight: bold;
+}
+
+.general-text {
+	padding: 10pt;
+	max-width: 560px;
+	text-overflow: ellipsis;
+	text-align: center;
+}
+.footer-space {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.MIPS-Code {
+	margin: 15pt;
+	padding-left: 15pt;
+}
+
+.feature-link {
+	font-size: 18pt;
+	color: grey;
+}
+.feature-link:hover{
+	text-decoration: none;
+}
+.offset-top {
+	margin-top: 15px;
+}
+
+
+/*
+Assignment Stuff
+*/
+.assignment_link {
+	font-size: 16pt;
+	color: black;
+
+}
+.assignment_link:hover{
+	color: #b5bac7;
+	text-decoration: none;
+}
+.assignment_title {
+	font-size: 16pt;
+}
+
+/*
+Instruction Stuff
+*/
+.instruction_link {
+	font-size: 16pt;
+	color: black;
+}
+.instruction_link:hover{
+	color: #b5bac7;
+	text-decoration: none;
+}
+.instruction_paragraph {
+	font-size: 12pt;
+	word-wrap: break-word; 
+}
+.instruction_pre {
+	border: none;
+	background-color: transparent;
+	white-space:pre-wrap;
+	word-break: normal;
+}
+
+
+
+
+
+
+
+
+
+
+/*
+Navigation Bar 
+No longer relevant
+*/
+.custom_nav {
+	border-bottom: 2px solid black;
+	margin-bottom: 25pt;
+	margin-top: 10pt;
+	padding-left: 5pt;
+}
+.custom_nav a {
+	padding-left: 5pt;
+	padding-right: 5pt;
+	text-decoration: none;
+	color: black;
+	font-size: 14pt;
+}
+
+.custom_nav a:hover {
+	color: #b5bac7;
+	text-decoration: none;
+}
+
+
+/* Error Handling */
+.error_code_header {
+	margin-left: 15px;
+}
+
+.error_code_paragraph {
+	margin-left: 15px;
+}
+
+/* End Error Handling */

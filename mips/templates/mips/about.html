@@ -1,0 +1,57 @@
+{% load static %}
+<html>
+<head>
+	<title>Default Site Name</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="" crossorigin="anonymous">
+
+	<link rel="icon" type="image/png" href="{% static 'mips/images/favicons/default-favicon.ico' %}"/>
+	<link rel="stylesheet" href="{% static 'mips/css/css.css' %}">
+
+</head>
+<body>
+	{% include 'mips/navigation.html' %}
+	<h3 class="text-center offset-top">About Me</h3>
+	<hr class="fading-break">	
+	<div class="container">
+
+		<div class="row">
+
+		<!-- First Paragraph -->
+		<div class="col-lg-5 col-md-6 col-sm-12 col-xs-12">
+			<p class="general-text">I created this site because I was tired of the low quality introductions to MIPS. My first introduction was in an Architecture class I took. I quickly realized a majority of the previous general techniques were mostly worthless. MIPS is not a language that is a pleasure to work in. It is an assembly language designed to test your skills and improve you.</p>
+
+			<p class="general-text">Currently, I am working on a MIPS program for Sudoku. It is painful. Higher level comparisons are difficult to do. They involve a difficult concept that must be split apart piece by piece taking a large amount of time in the process. For example, selecting unique possibilities among a row or column is quite challenging. The simplest way possible wins in the end. For something like uniqueness summing over possibilities was useful.</p>
+
+			<p class="general-text">See some of my other projects: <a href="https://github.com/percywk/past-projects">@github</a></p>
+
+			
+		</div>
+
+		<!-- Associated Item -->
+		<div class="col-lg-7 col-md-6 col-sm-12 col-xs-12"> 
+				<img class="img-fluid" src="{% static 'mips/images/general/halloween.jpg' %}" >
+
+				<p class="text-center">Head shot coming soon!</p>
+		</div>
+
+
+	
+		
+	</div>
+
+	
+
+
+
+<hr class="fading-break">
+
+
+<!-- Bootstrap Javascript Files-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

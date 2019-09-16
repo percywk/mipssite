@@ -1,0 +1,39 @@
+{% load static %}
+<html>
+<head>
+	<title>Default Site Name</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="" crossorigin="anonymous">
+
+	<link rel="icon" type="image/png" href="{% static 'mips/images/favicons/default-favicon.ico' %}"/>
+	<link rel="stylesheet" href="{% static 'mips/css/css.css' %}">
+
+</head>
+<body>
+
+	{% include 'mips/navigation.html' %}
+	<h3 class="text-center">Outside Assignments</h3>
+
+	<!-- Display some selected assignments -->
+
+	<!--Journaling file system-->
+	<h4>Journaling Nand Flash Memory System</h4>
+	<p>The school project involved a creating a file management system for mock NAND gate flash memory. The biggest challenged occurred with the inability to reset individual bits of a memory sector. An entire sector could be reset to high, but once low an individual bit could only be reset by resetting the containing sector. My team, decided to forego other solutions for maintaining a journal of edits that would detail actions that did not need to be immediately reflected in the system. Instead metadata was stored that allowed files to be reconstructed. For the sake of brevity I will cut this short.</p>
+
+	
+
+	<!-- -->
+	<h4></h4>
+	<p> </p>
+	
+
+
+
+<!-- Bootstrap Javascript Files-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

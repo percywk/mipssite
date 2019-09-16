@@ -1,0 +1,125 @@
+
+***add***
+add x, y, z
+
+The "add" instruction takes the values of the registers y and z and adds their total together before inserting in x.
+
+Example:
+Let $t1 = 2, and $t2 = 4
+add $t0, $t1, $t2
+
+Instruction Result: 
+$t0 = 6
+$t1 = 2
+$t2 = 4
+
+
+###add###
+***addi***
+addi x, y, 100 
+
+The "addi" instruction takes the values of a single operand registers alongside a constant and inputs the addition of the two into the destination register.
+
+Example:
+Let $t1 = 2
+addi $t0, $t1, 100
+
+Instruction Result: 
+$t0 = 102
+$t1 = 2
+
+
+###addi###
+***sub***
+sub x, y, z
+
+The "sub" instruction takes two operand registers and performs subtraction placing the result into destination register. 
+
+Example:
+Let $t1 = 2, $t2 = 4
+sub $t0, $t1, $t2
+
+Instruction Result: 
+$t0 = -2
+$t1 = 2
+$t2 = 4
+
+
+###sub###
+
+***lw***
+lw $rd, 0($sp)
+
+The "lw" instruction is a data transfer operation that moves data from the from an address in memory to a register. The first register is the destination register that takes the value, and the second register determines the starting address in memory. The constant determines the offset location from memory. Positive constants move down the inverted stack, while negative constants move upwards.
+
+Example:
+Let $sp = 20,000 where the word at address 20,000 = 16
+lw $t0, 0($sp)
+
+Instruction Result: 
+$t0 = 16
+$sp = 20,000
+
+###lw###
+
+
+***sw***
+sw $rd, 0($sp)
+
+The "sw" instruction is a data transfer operation that moves data from a register into memory. The first register is data to be transferred, and the second register determines the memory address. The constant determines the offset location from memory. Positive constants move down the inverted stack, while negative constants move upwards.
+
+Example:
+Let $t0 = 16 and $sp = 20,000
+sw $t0, 0($sp)
+
+Instruction Result: 
+$t0 = 16
+Word at $sp = 16
+
+###sw###
+
+
+***sll***
+sll $t0, $t0, 4
+
+The "sll" instructions is a special operation that shifts the individual bits of a register x times left. In shifting the register it inserts 0's in the LSB and any bits that move further than the MSB are discarded. In the syntax provided above the register $t0 is shifted 4 times to the left effectively multiplying it by 16.
+
+Example:
+Let $t0 = 2
+sll $t0, $t0, 2
+
+Result:
+$t0 = 8
+
+###sll###
+
+***srl***
+srl $t0, $t0, 4
+
+The "srl" instruction is an operation that shifts the individual bits of a register x times right.
+In shifting the register it inserts 0's into the MSB and any bits that more further than the LSB are discarded.
+
+Example:
+Let $t0 = 8
+srl $t0, $t0, 2
+
+Result:
+$t0 = 2
+
+###srl###
+
+***srl***
+srl $t0, $t0, 4
+
+The "srl" instruction is an operation that shifts the individual bits of a register x times right.
+In shifting the register it inserts 0's into the MSB and any bits that more further than the LSB are discarded.
+
+Example:
+Let $t0 = 8
+srl $t0, $t0, 2
+
+Result:
+$t0 = 2
+
+###srl###
+

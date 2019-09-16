@@ -1,0 +1,84 @@
+{% load static %}
+<html>
+<head>
+	<title>Default Site Name</title>
+	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="" crossorigin="anonymous">
+
+	<link rel="icon" type="image/png" href="{% static 'mips/images/favicons/default-favicon.ico' %}"/>
+	<link rel="stylesheet" href="{% static 'mips/css/css.css' %}">
+</head>
+<body>
+
+	{% include 'mips/navigation.html' %}
+
+	<h3 class="text-center offset-top">Learning MIPS</h3>
+
+	<!-- Jumbotron Section -->
+
+	<div class="container">
+	<div class="row">
+	<div class="jumbotron" style="background-image: url({% static 'mips/images/general/jumbo-back.png' %});
+	background-position: center; 
+	background-size: cover;
+	">
+  		<h1 class="display-4">Welcome to MIPS!</h1>
+  		<p class="lead">Microprocessor without Interlocked Pipelined Stages or MIPS for short is a reduced instruction set computer architecture. The current site aims to approach MIPS from a instructionary tool for those starting to learn an assembly language.</p>
+ 		 <hr class="my-4">
+
+ 		 <p class="lead">
+ 		 	<p>Click the button below to review some lessons!</p>
+    		<a class="btn btn-info btn-lg" href="{% url 'lesson-list' %}" role="button">Get Started</a>
+  		</p>
+
+	</div>
+	</div>
+	</div>
+
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<h4 class="text-center">Featured Lessons</h4>
+
+					<div class="content-container">
+
+					{% for lesson_name, lesson_number in featured_lessons.items %}
+					<p>
+						<a class="feature-link" href="{% url 'general_lesson'  lesson_number %}">{{lesson_name}}</a>
+					</p>
+					{% endfor %}
+
+					</div>
+			</div>
+
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+					<h4 class="text-center">Featured Instructions</h4>
+
+					{% for instruction_name, instruction_slug in featured_instructions.items %}
+					<p>
+						<a class="feature-link" href="{% url 'instruction' instruction_name %}">{{instruction_name}}</a>
+					</p>
+					{% endfor %}
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Extra footer padding -->
+	<div class="container">
+		<div class="footer-space"> </div>
+	</div>
+
+
+
+
+<!-- Bootstrap Javascript Files-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</body>
+</html>

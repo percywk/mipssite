@@ -1,0 +1,112 @@
+***Lesson=1***
+@@Hello World in MIPS
+!!Hello World
+++mips/code/lesson-1.asm
+MIPS is an assembly language. It is a very low level language that many will struggle to learn. It is primarily an instruction tool to teach students an assembly level language. MIPS is not a nice language. There is rarely any convenience, but if you approach it with respect you will be a much better programmer in the end.
+
+In MIPS both the program instructions and defined data reside in the same partition of memory while the program is executing. The ".data" segment allows the user to define which elements should belong to the data segment. The ".text" segment defines the user's instructions. The ".globl main" tag simply means the "main" label can be referenced from other files.
+
+As we can clearly see in the above image the text data "\nHello World!" is instantialized and associated with the label "HelloPrompt". The label will allow us to reference the text data.
+
+
+Now we just need a way to take our stored data and display it! In MIPS a "syscall" provides system services for a variety of functions like input/output. For printing a string we only need to do three things: 1. Load the addres of our string into register $a0, 2. Load the proper call sign into $v0 (4), 3. Issue the syscall.
+
+To use it properly please reference the table found at: https://courses.missouristate.edu/KenVollmar/MARS/Help/SyscallHelp.html
+
+The code loads the address of "\nHello World!" into register $a0. It then immediately loads the integer 4 into register $v0. Finally syscall will use the address inside of $a0 and the status code "4" to print out "\nHello World!".
+
+Now we can finally end the program. To properly end the progam we must issue another "syscall".
+
+
+^^1=mips/images/L1-data-definition.JPG
+&&1=Data Defintion=data-definition
+
+
+
+###Lesson=1###
+
+
+***Lesson=2***
+@@A basic introduction to algebra in MIPS
+!!Basic Algebra
+++mips/code/lesson-2.asm
+
+Learning to work with registers is paramount in an assembly language. The biggest issue is keeping track of and working with a statically bound number of registers. Variable names are not available in MIPS. However the registers do have names themselves.
+
+In the above problem we need to decompose our variables into registers. Secondly larger computations must be subdivided. For example we cannot simply multiply and add in a single operation, therefore we must split it.
+
+Consider our first problem: if X = 5, find Y = 2 * X + 5. We need to set our variables up and assign their values into registers. Then we can compute our multiplication with a left-shift, and finally add the result into $t1.
+
+Consider our second problem: if X = 5, Y = 10, find Z = 3 * (X + Y). We need to reset our registers for this new problem. Then we can add X and Y, and finally we can multiply using another register to store the value of 3.
+
+
+^^2=mips/images/L2-alg1.JPG
+^^3=mips/images/L2-alg2.JPG
+
+&&2=Problem 1=problem-1
+&&3=Problem 2=problem-2
+
+###Lesson=2###
+
+***Lesson=3***
+@@An introduction to loops and jumps
+!!Jumps and Loops
+++mips/code/lesson-3.asm
+
+Program control flow is handled by jumps and branches. Branches are similar to if statements in MIPS, moving to a specified label under certain conditions. Jumps are unconditional instructions that change the program counter to a specified address. With these two instruction categories we can introduce functions, loops, and if-else statements.
+
+Our objective for this lesson will be to create a simple loop displaying some numbers. The jal instruction jumps to a specific label, and saves the point of call’s address in the $ra register. The beq instruction jumps to a label if two registers are equal. Finally the j instruction is an immediate unconditional jump to a specific address.
+
+For this lesson, our main function will be incredibly simplified. It consists of two jump statements that move the program counter to a different set of instructions. The first set will display the number sequence. The second set will end the program.
+
+The displayNumSequence instructions are designed to display a sequence of numbers starting from 1 to the specified top end. First we need to set a counter, and the maximum count that we wish to display. Afterwards we create a label for our loop to return to. Then we display the prompt alongside the number. Then check if our counter has reached the maximum count. If it has we jump down to our return label. If not we increment and return to the top of the loop. A quick note, if jr $ra is never placed at the end of a function, the instructions will continue down.
+
+The endProgram instructions are only designed to display a quick message indicating a successful program termination before ending it with a system call.
+
+^^2=mips/images/L3-main.JPG
+^^3=mips/images/L3-loop.JPG
+^^4=mips/images/L3-end.JPG
+&&0=Preface=preface
+&&2=Main Function=main-function
+&&3=Loop Example=loop-example
+&&4=Ending Function=ending-function
+
+###Lesson=3###
+
+***Lesson=4***
+@@An introduction to stacks and more loops
+!!Stack Interactions
+++mips/code/lesson-4.asm
+
+Part of the execution process of MIPS is the creation of a general purpose stack. The stack is a series of memory locations that can be accessed to move past the limitation of 32 registers. This allows a programmer to store extra information, which can be used for a myriad of purposes. MIPS stack is upside down, with the stack pointer (the address of the most current item in the stack) pointing to the largest memory address. So whenever space must be made for the stack, we subtract from the current stack pointer. 
+
+Ironically, the data segment is the opposite. It starts at a lower address, and adds to get to the next available location. However, the address places the pointer for a labeled item at the highest possible address. The stack in MIPS can be subdivided into individual bytes, but isn't as general as using increments of words. 
+
+The command sw $dataRegister, offset($targetLocation) stores the register contents of $dataRegister at the location specified in the register of $targetLocation. The offset can be used to wiggle the stack pointer.
+
+The command lw $targetRegister, offset($targetLocation) stores the contents of a word starting at the point specified by $targetLocation into the $targetRegister. The offset can be used to wiggle the stack pointer.
+
+With that preface out of the way we can begin with some actual instructions.
+
+
+
+Objective: Dynamically create an array of items at run time, and force and sum the items.
+
+Not all content will be discussed within this section. Instead I will mainly focus on the dynamic array allocation. Our main function looks as follows. First we will push numbers onto the stack, read them whilst adding, and then display the result.
+
+Pushing items onto the stack can be handled by a simple loop. If the contents of $t0 do not equal the contents of $t1 we simply jump back to the top and repeat the process. Each pass through the loop, we place the current counter into the stack with $sw. Then we decrement the pointer to find the next available position. By convention, the stack pointers are usually decremented by 4 whenever the programmer knows words are being used. Afterwards we can move our saved pointer, and the total items into return registers.
+
+Following the same process we can simultaneously load items from our saved stack pointer, into $t3 and then add them together into $t4.  
+
+Finally we can display our output and end the program. For 10 items, starting at 1 and ending at 10, we should see 55. Alternatively we could calculate with the formula for traingular numbers
+
+^^6=mips/images/L4-main.JPG
+^^7=mips/images/L4-gen.JPG
+^^8=mips/images/L4-add.JPG
+^^9=mips/images/L4-output.JPG
+&&0=Preface=preface
+&&7=Array Generation=array-generation
+&&8=Array Addition=array-addition
+&&9=Final Output=output
+
+###Lesson=4###
