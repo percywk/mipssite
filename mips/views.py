@@ -5,6 +5,9 @@ from django.views import View
 
 from mips.py_files.read_backup import read_backup_data
 
+from mips.py_files.general_helper import get_featured_lessons
+from mips.py_files.general_helper import get_featured_instructions
+
 #Import some models
 from .models import Lesson, LessonParagraph, LessonParagraphImage, LessonNavigation
 from .models import Instruction, InstructionParagraph, InstructionImage
@@ -13,16 +16,35 @@ from .models import Instruction, InstructionParagraph, InstructionImage
 
 # Create your views here.
 
+
+
 #General home page.
 def home(request):
 
-	featured_lessons = {"Lesson 1": 1}
-	featured_instructions = {"add": "add"}
+	#featured_lessons = {"Lesson 1": 1}
+	featured_lessons = get_featured_lessons(3)
+	featured_instructions = get_featured_instructions(3)
+
+
+	
+
 	context = {
 	"featured_lessons": featured_lessons,
 	"featured_instructions": featured_instructions
 	}
 	return render(request, "mips/home.html", context)
+
+
+
+
+
+
+
+
+
+
+
+
 
 #General about page.
 def about(request):
@@ -249,6 +271,8 @@ def general_lesson(request, lesson_number):
 def outside_projects(request):
 	context = {}
 	return render(request, "mips/outside-projects.html", context)
+
+
 '''
 Want to write a lesson on basic loops and basic functions
 Title should just be jumping. Or some shit

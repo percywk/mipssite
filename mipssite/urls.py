@@ -17,13 +17,13 @@ from django.contrib import admin
 from django.urls import path
 
 from mips.views import home, about, instruction, instruction_list, past_assignment_list, past_assignment
-
 from mips.views import special_topics, lesson_list, general_lesson, outside_projects
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name="home"),
-    path('about', about, name="about"),
+    path('about/', about, name="about"),
     path('instructions/', instruction_list, name="instruction-list"),
     path('instruction/<str:instruction_name>', instruction, name="instruction"),
     path('past-assignments/', past_assignment_list, name="past-assignment-list"),
@@ -31,7 +31,10 @@ urlpatterns = [
     path('special-topics/', special_topics, name="special-topics"),
     path('lesson-list/', lesson_list, name='lesson-list'),
     path('lesson/<int:lesson_number>', general_lesson, name="general_lesson"),
-    path('outside-projects/', outside_projects, name="outside-projects")
+    path('outside-projects/', outside_projects, name="outside-projects"),
+
+
+
 
 ]
 

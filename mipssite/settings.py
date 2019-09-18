@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 's42hn*&b)$n+#g7q-$b2s)sn8yb=zxq$80$4h@e5@nw+lp7!#d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 
 'http://percywk.pythonanywhere.com/']

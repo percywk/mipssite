@@ -7,12 +7,14 @@ Need extra meta-data for lesson definitions
 '''
 class Lesson(models.Model):
 	lesson_number = models.IntegerField(primary_key=True)
-	created = models.DateTimeField(auto_now_add=True)
 	lesson_preface = models.TextField(default="")
 	lesson_name = models.CharField(max_length=50, default="")
 	lesson_main_image = models.CharField(max_length=150, default="")
 	associated_file = models.CharField(max_length=150, blank=True)
 
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True, blank=True)
+	
 	class Meta:
 		verbose_name = "Lesson"
 		verbose_name_plural = "Lessons"
@@ -56,11 +58,12 @@ Instructions should be shorter therefore the Foreign Key's can reference the Ins
 They may include images to clarify concepts.
 '''
 
-
 class Instruction(models.Model):
 	instruction_id = models.AutoField(primary_key=True)			#Auto increments (identity(1,1))
 	instruction_name = models.CharField(max_length=75, unique=True)
 
+	created = models.DateTimeField(auto_now_add=True)
+	updated = models.DateTimeField(auto_now=True)
 	class Meta:
 		verbose_name = "Instruction"
 		verbose_name_plural = "Instructions"
